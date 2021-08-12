@@ -7,16 +7,25 @@
 
 import SwiftUI
 
+
+class myPick: ObservableObject {
+    
+    var pick = 1
+    
+    
+    
+}
+
 struct ContentView: View {
     
-    @State var Pick = 1
+    @ObservedObject var Pick = myPick()
     
     var body: some View {
         NavigationView(content: {
             
             VStack{
                 
-                Picker(selection: $Pick, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                Picker(selection: $Pick.pick, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
 
                     ForEach((1...10), id: \.self){id in
 
@@ -27,10 +36,10 @@ struct ContentView: View {
 
 
                  NavigationLink(
-                    destination: ChildView(ParentPick: Pick)
+                    destination: ChildView(ParentPick: $Pick.pick)
                         .navigationBarBackButtonHidden(true),
                     label: {
-                        Text("Go To View \(Pick)")
+                        Text("Go To View \(Pick.pick)")
                     })
                     
                 

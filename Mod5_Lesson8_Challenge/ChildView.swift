@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChildView: View {
     
-    var ParentPick:Int
+    @Binding var ParentPick:Int
     
     var body: some View {
         
@@ -17,7 +17,7 @@ struct ChildView: View {
             
             Text("You Picked \(ParentPick)")
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: { ParentPick = 2  }, label: {
                 Text("Go Back")
             })
             
@@ -26,7 +26,10 @@ struct ChildView: View {
 }
 
 struct ChildView_Previews: PreviewProvider {
+    
+    @State static var isShowing = 1
+    
     static var previews: some View {
-        ChildView(ParentPick: 1)
+        ChildView(ParentPick: $isShowing)
     }
 }
