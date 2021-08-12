@@ -20,12 +20,15 @@ struct ContentView: View {
     
     @ObservedObject var Pick = myPick()
     
+    @State private var viewSelection: Int?
+    @State private var viewIndex = 1
+    
     var body: some View {
         NavigationView(content: {
             
             VStack{
                 
-                Picker(selection: $Pick.pick, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                Picker(selection: $viewIndex, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
 
                     ForEach((1...10), id: \.self){id in
 
@@ -34,13 +37,17 @@ struct ContentView: View {
                     }
                 }
 
+                Button("Go to view \(viewIndex)") {
+                    viewSelection = viewIndex
+                }
 
-                 NavigationLink(
-                    destination: ChildView(ParentPick: $Pick.pick)
-                        .navigationBarBackButtonHidden(true),
-                    label: {
-                        Text("Go To View \(Pick.pick)")
-                    })
+                ForEach((0...10), id: \.self) { index in
+                    NavigationLink(
+                        destination: ChildView(ParentPick: $viewSelection),
+                        tag: index,
+                        selection: $viewSelection,
+                    label: {})
+                }
                     
                 
             }

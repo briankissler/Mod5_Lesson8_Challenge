@@ -9,19 +9,20 @@ import SwiftUI
 
 struct ChildView: View {
     
-    @Binding var ParentPick:Int
+    @Binding var ParentPick:Int?
+     
     
     var body: some View {
         
         VStack{
             
-            Text("You Picked \(ParentPick)")
+            Text("You Picked \(ParentPick ?? 0 )")
             
             Button(action: { ParentPick = 2  }, label: {
                 Text("Go Back")
             })
             
-        }
+        }.navigationBarHidden(true)
     }
 }
 
@@ -30,6 +31,6 @@ struct ChildView_Previews: PreviewProvider {
     @State static var isShowing = 1
     
     static var previews: some View {
-        ChildView(ParentPick: $isShowing)
+        ChildView(ParentPick: .constant(1))
     }
 }
