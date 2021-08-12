@@ -18,7 +18,7 @@ struct ChildView: View {
             
             Text("You Picked \(ParentPick ?? 0 )")
             
-            Button(action: { ParentPick = 2  }, label: {
+            Button(action: { ParentPick = nil  }, label: {
                 Text("Go Back")
             })
             
