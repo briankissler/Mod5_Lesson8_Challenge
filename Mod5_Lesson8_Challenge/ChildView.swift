@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct ChildView: View {
+    
+    var ParentPick:Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack{
+            
+            Text("You Picked \(ParentPick)")
+            
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Text("Go Back")
+            })
+            
+        }
     }
 }
 
 struct ChildView_Previews: PreviewProvider {
     static var previews: some View {
-        ChildView()
+        ChildView(ParentPick: 1)
     }
 }

@@ -27,7 +27,7 @@ struct ContentView: View {
 
 
                  NavigationLink(
-                    destination: ChildView()
+                    destination: ChildView(ParentPick: Pick)
                         .navigationBarBackButtonHidden(true),
                     label: {
                         Text("Go To View \(Pick)")
